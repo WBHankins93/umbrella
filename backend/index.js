@@ -28,14 +28,22 @@ app.get('/api/weather', async (req,res) => {
             params: {
                 q: city,
                 appid: apiKey,
-                units: 'metric',
+                units: 'imperial',
             },
         });
-        
-        res.json(response.data)
+        res.status(200).json({
+            message: `Successfully gathered weather data for ${city}`,
+            weatherData: response.data,
+        });
 
     } catch (error) {
         console.log(error.message);
+
+        // Handle specific errors from OpenWeatherMap API
+        if (error.response && error.response.status === 404) {
+            return res.status(404).json({ error: 'City not found' });
+        }
+
         res.status(500).json({ error: 'Failed to fetch weather data'})
     }
 
