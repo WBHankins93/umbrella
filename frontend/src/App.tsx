@@ -1,10 +1,11 @@
-import WeatherDashboard from './components/WeatherDashboard'
+import { ThemeProvider } from './context/ThemeContext'
+import EnhancedWeatherDashboard from './components/EnhancedWeatherDashboard'
 
 function App() {
   return (
-    <div className="App">
-      <WeatherDashboard />
-    </div>
+    <ThemeProvider>
+      <EnhancedWeatherDashboard />
+    </ThemeProvider>
   )
 }
 

@@ -169,7 +169,7 @@ const D3TemperatureChart = ({
 
     circles
       .transition()
-      .delay((d, i) => i * 50)
+      .delay((_d, i) => i * 50)
       .duration(300)
       .attr('r', 5)
 
